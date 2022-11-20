@@ -1,10 +1,7 @@
 package com.example.demo.rest;
 
 import lombok.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -48,6 +45,13 @@ public class RestParamController {
                 , userInfo.getHobby()
         );
     }
+
+    @GetMapping("/user4/{userNum}")
+//    @RequestMapping(value = "/user4/{userNum}", method = RequestMethod.GET)
+    public String user4(@PathVariable("userNum") int num) {
+        return String.format("회원번호는 %d번입니다.", num);
+    }
+
 
     @Setter // 필수
     @Getter
