@@ -29,4 +29,12 @@ public class TodoService {
         return new FindAllDTO(repository.findAll());
     }
 
+    public FindAllDTO createServ(ToDo newTodo) {
+
+        repository.save(newTodo);
+
+        log.info("새로운 할일 [Id: {}]이 저장되었습니다.", newTodo.getId());
+
+        return findAllServ();
+    }
 }

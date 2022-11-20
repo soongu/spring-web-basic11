@@ -3,7 +3,7 @@ package com.example.demo.todo.entity;
 import lombok.*;
 
 @Setter @Getter @ToString
-@NoArgsConstructor // 기본 생성자
+// @NoArgsConstructor // 기본 생성자
 @AllArgsConstructor // 전체 필드 초기화 생성자
 // 역할: 하나의 할 일 데이터의 집합 객체
 public class ToDo {
@@ -13,4 +13,16 @@ public class ToDo {
     private String title; // 할 일 내용
     private boolean done; // 할 일 완료 여부
 
+    // 일련번호
+    private static long seq;
+
+    public ToDo() {
+        this.id = ++seq;
+    }
+
+    public ToDo(String title) {
+        this();
+        this.title = title;
+        this.userId = "noname";
+    }
 }
