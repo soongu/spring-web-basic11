@@ -29,12 +29,16 @@ public class TodoService {
         return new FindAllDTO(repository.findAll());
     }
 
-    public FindAllDTO createServ(ToDo newTodo) {
+    public FindAllDTO createServ(final ToDo newTodo) {
 
-        repository.save(newTodo);
+        if (newTodo == null) {
+            log.warn("newTodo cannot be null!");
+            throw new RuntimeException("newTodo cannot be null!");
+        }
 
-        log.info("새로운 할일 [Id: {}]이 저장되었습니다.", newTodo.getId());
+        boolean flag = repository.save(newTodo);
+        if (flag) log.info("새로운 할일 [Id: {}]이 저장되었습니다.", newTodo.getId());
 
-        return findAllServ();
+        return flag ? findAllServ() : null;
     }
 }
