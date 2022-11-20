@@ -41,4 +41,16 @@ public class TodoService {
 
         return flag ? findAllServ() : null;
     }
+
+    public FindAllDTO deleteServ(long id) {
+
+        boolean flag = repository.remove(id);
+
+        // 삭제 실패한 경우
+        if (!flag) {
+            log.warn("delete fail!! not found id [{}]", id);
+            throw new RuntimeException("delete fail!");
+        }
+        return findAllServ();
+    }
 }

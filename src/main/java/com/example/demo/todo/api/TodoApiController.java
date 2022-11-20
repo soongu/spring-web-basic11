@@ -2,16 +2,11 @@ package com.example.demo.todo.api;
 
 import com.example.demo.todo.dto.FindAllDTO;
 import com.example.demo.todo.entity.ToDo;
-import com.example.demo.todo.repository.TodoRepository;
-import com.example.demo.todo.repository.TodoRepositoryMemoryImpl;
 import com.example.demo.todo.service.TodoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @Slf4j
@@ -45,6 +40,28 @@ public class TodoApiController {
 
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
+        }
+
+    }
+
+    // 할 일 개별 조회 요청
+    // URI : /api/todos/3 : GET  => 3번 할 일만 조회해서 클라이언트에게 리턴
+
+
+    // 할 일 삭제 요청
+    // URI : /api/todos/3 : DELETE
+    // => 3번 할 일을 삭제 후 삭제된 이후 갱신된 할일 목록 리턴
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable long id) {
+
+        log.info("/api/todos/{} DELETE request!", id);
+
+        try {
+            FindAllDTO dtos = service.deleteServ(id);
+            return ResponseEntity.ok().body(dtos);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
         }
 
     }
