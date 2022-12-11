@@ -4,6 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -43,6 +47,33 @@ class TestRepositoryTest {
 
         //then
         assertTrue(flag);
+    }
+
+    @Test
+    @DisplayName("유저이름과 나이를 수정해야 한다.")
+    @Transactional
+    @Rollback
+    void deleteTest() {
+        //given
+        String id = "d335e973-62d7-49a6-9cfb-42dd165e5017";
+
+        //when
+        boolean flag = repository.remove(id);
+
+        //then
+        assertTrue(flag);
+    }
+
+    @Test
+    @DisplayName("테스트 데이터 전체를 조회해야 한다.")
+    void findAllTest() {
+        //given
+        //when
+        List<TestEntity> entityList = repository.findAll();
+
+        //then
+        System.out.println(entityList);
+        assertEquals(2, entityList.size());
     }
 
 }

@@ -49,10 +49,10 @@ public class TodoApiController {
     // 할 일 개별 조회 요청
     // URI : /api/todos/3 : GET  => 3번 할 일만 조회해서 클라이언트에게 리턴
     @GetMapping("/{id}")
-    public ResponseEntity<?> findOne(@PathVariable Long id) {
+    public ResponseEntity<?> findOne(@PathVariable String id) {
         log.info("/api/todos/{} GET request!", id);
 
-        if (id == null || id < 0) return ResponseEntity.badRequest().build();
+        if (id == null) return ResponseEntity.badRequest().build();
 
         TodoDto dto = service.findOneServ(id);
 
@@ -66,7 +66,7 @@ public class TodoApiController {
     // URI : /api/todos/3 : DELETE
     // => 3번 할 일을 삭제 후 삭제된 이후 갱신된 할일 목록 리턴
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable long id) {
+    public ResponseEntity<?> delete(@PathVariable String id) {
 
         log.info("/api/todos/{} DELETE request!", id);
 

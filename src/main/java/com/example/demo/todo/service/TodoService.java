@@ -42,7 +42,7 @@ public class TodoService {
         return flag ? findAllServ() : null;
     }
 
-    public FindAllDTO deleteServ(long id) {
+    public FindAllDTO deleteServ(String id) {
 
         int x = 10, y = 20;
 //        System.out.println(false & y++ == 21);
@@ -60,7 +60,7 @@ public class TodoService {
 
 
 
-    public TodoDto findOneServ(Long id) {
+    public TodoDto findOneServ(String id) {
 
         ToDo toDo = repository.findOne(id);
         log.info("findOneServ return data - {}", toDo);
