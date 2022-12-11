@@ -68,6 +68,7 @@ class TodoRepositoryMemoryImplTest {
         // given
         ToDo newTodo = new ToDo(4L, "말똥이", "낮잠자기", false);
 
+
         // when
         boolean flag = repository.save(newTodo);
 
@@ -78,6 +79,9 @@ class TodoRepositoryMemoryImplTest {
         assertEquals(4, toDoList.size());
 
     }
+
+
+
 
 }
 

@@ -24,6 +24,7 @@ public class TodoRepositoryMemoryImpl implements TodoRepository {
         toDoMap.put(1L, new ToDo("저녁밥 만들기"));
         toDoMap.put(2L, new ToDo("산책가기"));
         toDoMap.put(3L, new ToDo("노래연습하기"));
+        toDoMap.put(4L, new ToDo("리액트 컴포넌트 만들기"));
     }
 
 

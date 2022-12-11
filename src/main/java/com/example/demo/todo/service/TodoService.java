@@ -44,6 +44,10 @@ public class TodoService {
 
     public FindAllDTO deleteServ(long id) {
 
+        int x = 10, y = 20;
+//        System.out.println(false & y++ == 21);
+
+
         boolean flag = repository.remove(id);
 
         // 삭제 실패한 경우
@@ -54,11 +58,17 @@ public class TodoService {
         return findAllServ();
     }
 
+
+
     public TodoDto findOneServ(Long id) {
 
         ToDo toDo = repository.findOne(id);
         log.info("findOneServ return data - {}", toDo);
 
+
         return toDo != null ? new TodoDto(toDo) : null;
     }
+
+
+
 }

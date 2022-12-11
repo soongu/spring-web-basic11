@@ -9,12 +9,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigInteger;
-
 @RestController
 @Slf4j
 @RequestMapping("/api/todos")
 @RequiredArgsConstructor
+@CrossOrigin // 다른 서버의 요청 허용
 public class TodoApiController {
 
     private final TodoService service;
@@ -66,7 +65,6 @@ public class TodoApiController {
     // 할 일 삭제 요청
     // URI : /api/todos/3 : DELETE
     // => 3번 할 일을 삭제 후 삭제된 이후 갱신된 할일 목록 리턴
-
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable long id) {
 
@@ -80,5 +78,6 @@ public class TodoApiController {
         }
 
     }
+
 
 }
