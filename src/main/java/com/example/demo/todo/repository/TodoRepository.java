@@ -26,4 +26,8 @@ public interface TodoRepository {
 
     // 할일 삭제 기능
     boolean remove(String id);
+
+    // 할 일 수정 기능 (체크기능, 제목수정기능)
+    boolean modify(ToDo toDo);
+
 }

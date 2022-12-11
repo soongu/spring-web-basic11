@@ -2,6 +2,7 @@ package com.example.demo.todo.entity;
 
 import lombok.*;
 
+import java.util.Date;
 import java.util.UUID;
 
 @Setter @Getter @ToString
@@ -14,6 +15,7 @@ public class ToDo {
     private String userId; // 할 일을 등록한 회원의 식별자
     private String title; // 할 일 내용
     private boolean done; // 할 일 완료 여부
+    private Date regDate; // 할 일 등록 시간
 
     // 일련번호
     private static long seq;

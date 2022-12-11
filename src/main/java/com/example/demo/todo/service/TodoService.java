@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 // 역할: 컨트롤러와 저장소 사이의 잡일 처리 역할
@@ -69,6 +70,11 @@ public class TodoService {
         return toDo != null ? new TodoDto(toDo) : null;
     }
 
+    public FindAllDTO update(ToDo toDo) {
 
+        boolean flag = repository.modify(toDo);
+
+        return flag ? findAllServ() : new FindAllDTO();
+    }
 
 }

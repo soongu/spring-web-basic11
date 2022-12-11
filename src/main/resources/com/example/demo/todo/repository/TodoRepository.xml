@@ -18,8 +18,9 @@
     </delete>
 
     <select id="findAll" resultType="com.example.demo.todo.entity.ToDo">
-        SELECT id, userId, title, done
+        SELECT id, userId, title, done, regDate
         FROM tbl_todo
+        ORDER BY regDate
     </select>
 
     <select id="findOne" resultType="com.example.demo.todo.entity.ToDo">
@@ -27,5 +28,11 @@
         FROM tbl_todo
         WHERE id=#{id}
     </select>
+
+    <update id="modify">
+        UPDATE tbl_todo
+        SET done=#{done}, title=#{title}
+        WHERE id=#{id}
+    </update>
 
 </mapper>
