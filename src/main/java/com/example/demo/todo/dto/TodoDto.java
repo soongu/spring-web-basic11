@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 public class TodoDto {
 
-    private long id;
+    private String id;
     private String title;
     private boolean done;
 

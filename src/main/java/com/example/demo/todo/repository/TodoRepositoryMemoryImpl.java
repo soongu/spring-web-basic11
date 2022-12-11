@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 // 역할: 할 일 데이터를 메모리에 CRUD하는 역할
-@Repository
+//@Repository
 public class TodoRepositoryMemoryImpl implements TodoRepository {
 
 //    메모리 저장소
