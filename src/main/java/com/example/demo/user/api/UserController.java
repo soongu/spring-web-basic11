@@ -60,6 +60,14 @@ public class UserController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    // /auth/check?email=aaa@naver.com
+    @GetMapping("/check")
+    public ResponseEntity<?> checkEmail(String email) {
+        boolean flag = userService.isDuplicate(email);
+        log.info("{} 중복여부?? - {}", email, flag);
+        return ResponseEntity.ok().body(flag);
+    }
 }
 
 
