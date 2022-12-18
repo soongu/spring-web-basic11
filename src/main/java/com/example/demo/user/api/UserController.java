@@ -1,5 +1,6 @@
 package com.example.demo.user.api;
 
+import com.example.demo.error.ErrorDTO;
 import com.example.demo.security.TokenProvider;
 import com.example.demo.user.dto.UserRequestDTO;
 import com.example.demo.user.dto.UserResponseDTO;
@@ -57,7 +58,7 @@ public class UserController {
             return ResponseEntity.ok().body(responseDTO);
 
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body(new ErrorDTO(e.getMessage()));
         }
     }
 
