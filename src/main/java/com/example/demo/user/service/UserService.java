@@ -24,6 +24,7 @@ public class UserService {
         // 패스워드 인코딩
         String rawPw = userEntity.getPassword();
         userEntity.setPassword(encoder.encode(rawPw));
+
         boolean flag = userRepository.register(userEntity);
 
         return flag
@@ -54,6 +55,14 @@ public class UserService {
     // 이메일 중복체크
     public boolean isDuplicate(String email) {
         return userRepository.existsByEmail(email);
+    }
+
+
+    // 프로필 찾기
+    public String getProfilePath(String userId) {
+        String profile = userRepository.findProfile(userId);
+        log.info("find profile path - {}", profile);
+        return profile;
     }
 }
 
